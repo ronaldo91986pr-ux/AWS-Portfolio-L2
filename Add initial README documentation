@@ -1,0 +1,31 @@
+# AWS Cloud Engineering & L2 Support Portfolio
+
+## 🚀 Overview
+This repository documents practical cloud infrastructure design, incident troubleshooting, and operational maintenance performed in Amazon Web Services (AWS), aligned with **AWS L2 / L2.5 Cloud Support Engineer** requirements.
+
+---
+
+## 🏗️ Architecture Design
+* **Virtual Private Cloud (VPC):** Custom VPC (`10.0.0.0/16`) configured with multi-AZ public and private subnets.
+* **Network Routing:** 
+  * Public subnets route directly to an **Internet Gateway (IGW)**.
+  * Private subnets route outbound traffic securely through a **Regional NAT Gateway**.
+* **Compute & Services:** Designed for high availability, security hardening, and scalability.
+
+---
+
+## 🛠️ L2 Troubleshooting Scenarios & Remediation
+
+### Incident Scenario: Outbound Internet Loss in Private Subnets
+* **Symptom:** Backend workloads / EC2 instances in private subnets failing to download security patches or connect to external APIs.
+* **Diagnostic Steps:**
+  1. Inspected private subnet Route Tables.
+  2. Verified target mapping for destination `0.0.0.0/0`.
+  3. Checked NAT Gateway operational state.
+* **Remediation / Fix:** Updated route table associations to correctly route traffic through the active Regional NAT Gateway.
+
+---
+
+## 📸 Portfolio Artifacts
+* `vpc-architecture.png`: Overview of custom VPC, subnets, and gateway associations.
+* `route-table-fix.png`: Verified route table configuration ensuring proper private subnet outbound routing.
